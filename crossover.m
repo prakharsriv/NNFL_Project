@@ -9,6 +9,7 @@ uniformRate=0.5;
      else 
          p(i)=indiv2(i);
      end
+     end
        c=p; 
         
     end
