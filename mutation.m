@@ -1,5 +1,5 @@
 %mutation function
-function [c] = mutation(indiv1)
+function [c] = mutate(indiv1)
 mutationRate=0.015;
 for i=1:60
     x=rand;
