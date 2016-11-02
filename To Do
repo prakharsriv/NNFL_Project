@@ -1,8 +1,0 @@
-To complete the project we need to do these tasks.
-
-1) create data.
-2) create an initial population of chromosomes where weach chromosome stores coordinates of 3 centroids in binary representation.
-3) start ga and call the crossover(+tournament selection), mutation, elitism functions.
-4) call the fcm function on the new generation. Fcm function calculates the membership values and the new centroid. Call the fitness function.
-5) store the fitness values and best cases.
-6) repeat step 3-5 for the given number of generations.
