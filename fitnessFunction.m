@@ -1,4 +1,4 @@
-function x = fitnessFunction(alpha,fcmdata)
+function x = fitnessFunction(alpha,fcm)
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 %decimal alpha
@@ -49,8 +49,8 @@ end
 
 %membership function
 u=[]
-for i=1:M
-    for j=1:3
+for i=1:3
+    for j=1:M
         u(i,j)=(d(i,j)^-2)/((d(1,j)^-2)+(d(2,j)^-2)+(d(3,j)^-2))
     end
 end
