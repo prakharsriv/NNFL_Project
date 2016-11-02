@@ -116,3 +116,12 @@ for i = 1:500
 end
 
 %% plot functions
+[Mi,In]= min(best_fitness);
+best_indiv=fittest(In,:);
+t=1;
+for j =1:6
+			temp = best_indiv(t:t+9);
+			t=t+10;
+			alpha = [alpha ; temp];
+		end
+	plot(alpha,fcm);
