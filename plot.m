@@ -3,12 +3,12 @@ function plot(alpha,fcm)
 %   Detailed explanation goes here
 %decimal alpha
 
-alphax1=bi2de(alpha(1,:))/1024;
-alphay1=bi2de(alpha(2,:))/1024;
-alphax2=bi2de(alpha(3,:))/1024;
-alphay2=bi2de(alpha(4,:))/1024;
-alphax3=bi2de(alpha(5,:))/1024;
-alphay3=bi2de(alpha(6,:))/1024;
+alphax1=bin2dec(alpha(1,:))/1024;
+alphay1=bin2dec(alpha(2,:))/1024;
+alphax2=bin2dec(alpha(3,:))/1024;
+alphay2=bin2dec(alpha(4,:))/1024;
+alphax3=bin2dec(alpha(5,:))/1024;
+alphay3=bin2dec(alpha(6,:))/1024;
 %min and max x and y values in given fcm data
 xmin=min(fcm(:,1));
 ymin=min(fcm(:,2));
