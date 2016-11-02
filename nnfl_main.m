@@ -17,7 +17,7 @@ pop_one = ['100010100111111010001111111101011011101110000001010111110101';'10001
        '100010100111111010001111111101011011101110000001010111110101';'100011100000010110011011110110011111000011000101011000000101'];
 
      
-p =[];
+p =[];  %% mostly unused. check it.
 for j=1:20
 for i=1:60
     x = randi([0 1],1,1);
@@ -26,6 +26,40 @@ for i=1:60
 end
 
 end
+load nnfldata.dat;
+fcm = nnfldata;
+
+%% declaring empty variables for the fcm function.
+
+fitness = [];   %% will store the fitness values for each chromosome.
+best_fitness = []; %% will store the best fitness value from fitness.
+fittest = []; %% will store the best chromosome of each population. 
+alpha = []; %% alpha is a chromosome which is broken in 6 parts. It needs to be passed to fitnessFunction and plot fn.
+temp = []; %% temp is to create alpha.
+%%temp_fittest = []; %% to hold temporarily the best chromosome.
+%%temp_best_fittest = []; %% to hold temporarily the best fitness value.
+
+%% calling the fcm function.
+%%t=1;
+for i =1 : 20
+	t=1;
+	indiv = pop_one(i,:);
+	for j =1:6
+		temp = indiv(t:t+9);
+		t=t+10;
+		alpha = [alpha ; temp];
+	end
+	fitness = [fitness fitnessFunction(alpha,fcm)];
+	alpha = [];
+	
+end
+	[M I] = min(fitness);
+	best_fitness = [ best_fitness M];
+	fittest = [fittest ; pop_one(I,:)]; 
+
+
+
+
 
 
 %% starting GA loop
@@ -35,9 +69,9 @@ for i = 1:500
 
 	%% elitism
 		%% to carry over the best chromosome from the last generation.
-		%% getFittest will return the best chromosome.
+		%% fittest(i) will return the ith best chromosome.
 	
-	pop_two = [getFittest(pop_one, fitness)];
+	pop_two = [fittest(i)];
 	
 	%% crossover
 		%% we will call the tournament selection in crossover
@@ -59,6 +93,24 @@ for i = 1:500
 	%% call the fcm function.
 	%% fcm function will call the fitness function and return the fitness values and best chromosomes.
 	%% store the best results.
+
+	for i =1 : 20
+		t=1;
+		indiv = pop_two(i,:);
+		for j =1:6
+			temp = indiv(t:t+9);
+			t=t+10;
+			alpha = [alpha ; temp];
+		end
+		fitness = [fitness fitnessFunction(alpha,fcm)];
+		alpha = [];
+		 
+	end
+		[M I] = min(fitness);
+		best_fitness = [ best_fitness M];
+		fittest = [fittest ; pop_two(I,:)];
+
+
 
 	pop_one = pop_two;
 end
